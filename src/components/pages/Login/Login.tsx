@@ -39,11 +39,9 @@ export const Login: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          body: {
-            email,
-            password,
-          },
-        }),
+          email,
+          password,
+        }),        
       });
 
       const data = await response.json();
