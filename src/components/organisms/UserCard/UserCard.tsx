@@ -3,7 +3,6 @@ import { Avatar } from "../../atoms/Avatar";
 import { Button } from "../../atoms/Button";
 import { UserInfo } from "../../molecules/UserInfo";
 import { UserCardProps } from "./UserCard.type";
-import { useThemeStore } from "../../../stores/theme"; 
 
 const UserCard: React.FC<UserCardProps> = ({
   firstName,
@@ -12,15 +11,15 @@ const UserCard: React.FC<UserCardProps> = ({
   status,
   dob,
   onEdit,
-  onDelete
+  onDelete,
+  isDarkMode 
 }) => {
-  const { theme } = useThemeStore(); 
   const initials = `${firstName?.charAt(0) ?? ''}${lastName?.charAt(0) ?? ''}`;
 
   return (
     <div
       className={`p-4 rounded-xl shadow-xl flex flex-col items-start space-y-2 w-full transition-colors duration-300 ${
-        theme === "dark" ? "bg-gray-700 text-white" : "bg-white text-black"
+        isDarkMode ? "bg-gray-700 text-white" : "bg-white text-black"
       }`}
     >
       <Avatar initials={initials} />
@@ -41,7 +40,7 @@ const UserCard: React.FC<UserCardProps> = ({
           Edit
         </Button>
         <Button
-          onClick={onDelete}
+          onClick={onDelete} 
           className="bg-red-500 text-white px-3 py-1 rounded cursor-pointer"
         >
           Delete
